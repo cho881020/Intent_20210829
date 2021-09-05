@@ -16,6 +16,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        smsBtn.setOnClickListener {
+            val inputPhoneNum = phoneNumEdt.text.toString()
+            val myUri = Uri.parse("smsto:${inputPhoneNum}")
+            val myIntent = Intent( Intent.ACTION_SENDTO,  myUri )
+
+//            미리 보내줄 내용 적어두기
+            myIntent.putExtra("sms_body", "미리 적어줄 내용")
+
+            startActivity(myIntent)
+        }
 
         callBtn.setOnClickListener {
 
